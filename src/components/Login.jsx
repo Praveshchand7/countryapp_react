@@ -15,15 +15,15 @@ import {
   from 'mdb-react-ui-kit';
 
 const Login = () => {
-    const [email,setEmail]=useState('');
-    const [password,setPassword]=useState('');
-    const [user,loading,error]=useAuthState(auth);
+    const [email, setEmail]= useState('');
+    const [password, setPassword]= useState('');
+    const [user, loading]= useAuthState(auth);
     const navigate = useNavigate();
 
     useEffect(()=>{
         if(loading) return;
         if(user) navigate('/countries')
-    },[user,loading])
+    },[user,loading,navigate])
 
     return (
         <div>

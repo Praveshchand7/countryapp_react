@@ -28,7 +28,7 @@ const CountryCard = ({country}) => {
               <Card.Title className="mb-3 text-muted">{country.name.common}<Card.Subtitle className="mb-3 text-muted" > ({country.name.official})</Card.Subtitle>
               </Card.Title>
               <Card.Subtitle className="mb-4 text-muted">
-                  {country.capital}
+                  Capital City: {country.capital}
               </Card.Subtitle>
               <ListGroup
                 variant="flush"
@@ -38,7 +38,7 @@ const CountryCard = ({country}) => {
                 </i>
               </ListGroup.Item>
               <ListGroup.Item>
-                <i className="bi bi-cash-coin me-2"><span style=    {{paddingLeft:'1rem'}}>{Object.values(country.currencies || {})
+                <i className="bi bi-cash-coin me-2"><span style={{paddingLeft:'1rem'}}>{Object.values(country.currencies || {})
                   .map((currency)=>currency.name)
                   .join(", ")}</span>
                 </i>

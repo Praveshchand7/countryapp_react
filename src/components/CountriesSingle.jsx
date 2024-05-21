@@ -4,6 +4,9 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
 
+
+
+
 const CountriesSingle = () => {
   //function hooks
   const location = useLocation();
@@ -13,6 +16,7 @@ const CountriesSingle = () => {
   const [weather, setWeather]= useState('');
   const [errors, setError] = useState(false);
   const [loading, setLoading] = useState(true);
+  
 
     //Destructuring variables
   const country = location.state.country;
@@ -22,7 +26,7 @@ const CountriesSingle = () => {
       setLoading(false)
       setError(true)
     }else{
-    axios.get(`https://api.openweathermap.org/data/2.5/weather?q=${country.capital}&units=metric&appid=${process.env.REACT_APP_OPENWEATHER_KEY}`)
+    axios.get(`https://api.openweathermap.org/data/2.5/weather?q=${country.capital}&appid=${process.env.REACT_APP_OPENWEATHER_KEY}&units=metric`)
     .catch((error)=> {
       setError(true);
     })
@@ -58,7 +62,7 @@ if (loading) {
       </Col>
       <Col>
       <h2 className='display-4'>{country.name.common}</h2>
-      <h3>{country.capital}</h3>
+      <p>Capital City:<strong>{country.capital}</strong></p>
       
       {!errors && weather && (
         <div>
@@ -75,18 +79,8 @@ if (loading) {
         <p> No weather for the country </p>
         </div>
       )}
-       
-     
-
-       
-
-
-     
-       
-     
-     
-      <h4>Area: {(new Intl.NumberFormat('en-EN').format(country.area))}</h4>
-      <h4>Continent: {country.continents}</h4>
+      <p>Area:<strong>{(new Intl.NumberFormat('en-EN').format(country.area))} sq meters</strong></p>
+      <p>Continent: <strong>{country.continents}</strong></p>
       </Col>  
     </Row>
     <Row>
